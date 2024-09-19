@@ -7,6 +7,7 @@ public class QuestChecker : MonoBehaviour
 {
     [SerializeField] private GameObject dialogueBox, finishedText, unfinishedText;
     [SerializeField] private int questGoal = 10;
+    private int scene = 1;
     [SerializeField] private int levelToLoad;
 
     private Animator anim;
@@ -15,6 +16,15 @@ public class QuestChecker : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
+
+        if (scene == 1) 
+        { 
+            //QUEST FÖR LVL 1
+        }
+        if (scene == 2)
+        {
+            //QUEST FÖR LVL 2
+        }
     }
 
     //Om spelaren går in i området visas rutan.
@@ -43,7 +53,7 @@ public class QuestChecker : MonoBehaviour
     private void LoadNextLevel()
     {
         SceneManager.LoadScene(levelToLoad);
-
+        scene++;
     }
 
     //Om spelaren går ut ur området försvinner rutan.
