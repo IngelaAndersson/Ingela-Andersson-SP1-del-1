@@ -9,6 +9,8 @@ public class QuestChecker : MonoBehaviour
     [SerializeField] private int questGoal = 10;
     private int scene = 1;
     [SerializeField] private int levelToLoad;
+    // private string enemyKilled;
+
 
     private Animator anim;
     private bool levelIsLoading = false;
@@ -17,7 +19,7 @@ public class QuestChecker : MonoBehaviour
     {
         anim = GetComponent<Animator>();
 
-        if (scene == 1) 
+      /*  if (scene == 1) 
         { 
             //QUEST FÖR LVL 1
         }
@@ -25,6 +27,7 @@ public class QuestChecker : MonoBehaviour
         {
             //QUEST FÖR LVL 2
         }
+      */
     }
 
     //Om spelaren går in i området visas rutan.
