@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Tilemaps;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -12,12 +13,33 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private int damageGiven = 1;
     private SpriteRenderer rend;
     private bool canMove = true;
-    EnemyCounter enemyCounterScript; // NYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+    EnemyCounter enemyCounterScript; 
 
     private void Start()
     {
         rend = GetComponent<SpriteRenderer>();
-        enemyCounterScript = GameObject.Find("KillCounter").GetComponent<EnemyCounter>(); //NYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+
+        // Ingen EnemyCounter behövs i level 1. 
+        if (SceneManager.GetActiveScene().name == "Level1") 
+        {
+            enemyCounterScript = null; 
+        }
+        else
+        {
+            GameObject enemyCounterObject = GameObject.Find("EnemyCounter");
+            if (enemyCounterObject != null)
+            {
+                enemyCounterScript = enemyCounterObject.GetComponent<EnemyCounter>();
+                if (enemyCounterScript == null)
+                {
+                    Debug.LogError("EnemyCounter-komponenten saknas på EnemyCounter-objektet");
+                }
+            }
+            else
+            {
+                Debug.LogError("EnemyCounter-objektet hittades inte i scenen");
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -65,7 +87,6 @@ public class EnemyMovement : MonoBehaviour
                 other.gameObject.GetComponent<PlayerMovement>().TakeKnockback(-knockbackForce, upwardForce);
             }
         }
-
     }
 
     //Om den triggar något går den hit. 
@@ -81,9 +102,12 @@ public class EnemyMovement : MonoBehaviour
             GetComponent<Rigidbody2D>().gravityScale = 0;
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             canMove = false;
-            Destroy(gameObject, 0.4f);
-            enemyCounterScript.AddKill(); // NYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
 
+            if (enemyCounterScript != null)
+            {
+                enemyCounterScript.AddKill(); // NYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+            }
+            Destroy(gameObject, 0.4f);
         }
     }
 

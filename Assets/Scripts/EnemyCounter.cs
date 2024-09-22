@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class EnemyCounter : MonoBehaviour
 {
     public TMP_Text counterText;
-    int kills = 0;
+    public int kills = 0;
 
     private void Update()
     {
