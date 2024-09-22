@@ -9,7 +9,6 @@ public class QuestChecker : MonoBehaviour
     [SerializeField] private int questGoal = 10;
     private int scene = 1;
     [SerializeField] private int levelToLoad;
-    // private string enemyKilled;
 
 
     private Animator anim;

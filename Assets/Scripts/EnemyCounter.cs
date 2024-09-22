@@ -1,23 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemyCounter : MonoBehaviour
 {
-    public int enemiesDefeated = 0;
-    public Text enemyCounterText;
+    public TMP_Text counterText;
+    int kills = 0;
 
-    //Anropar denna metod när en enemy dödas
-    public void OnEnemyDefeated()
+    private void Update()
     {
-        enemiesDefeated++;
-        UpdateUI();
+        ShowKills();
+    }
+    private void ShowKills()
+    {
+        counterText.text = kills.ToString();
     }
 
-    private void UpdateUI()
+    public void AddKill()
     {
-        enemyCounterText.text = "Enemies defeated: " + enemiesDefeated;
+        kills++;
     }
 
 }

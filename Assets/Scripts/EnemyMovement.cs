@@ -12,10 +12,12 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private int damageGiven = 1;
     private SpriteRenderer rend;
     private bool canMove = true;
+    EnemyCounter enemyCounterScript; // NYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
 
     private void Start()
     {
         rend = GetComponent<SpriteRenderer>();
+        enemyCounterScript = GameObject.Find("KillCounter").GetComponent<EnemyCounter>(); //NYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
     }
 
     private void FixedUpdate()
@@ -23,14 +25,14 @@ public class EnemyMovement : MonoBehaviour
         if (!canMove)
             return;
 
-        transform.Translate(new Vector2 (moveSpeed, 0) * Time.deltaTime);
+        transform.Translate(new Vector2(moveSpeed, 0) * Time.deltaTime);
 
-        if (moveSpeed > 0) 
+        if (moveSpeed > 0)
         {
             rend.flipX = true;
         }
 
-        if (moveSpeed < 0) 
+        if (moveSpeed < 0)
         {
             rend.flipX = false;
         }
@@ -40,8 +42,8 @@ public class EnemyMovement : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         //Vänder riktning om kolliderar med något.
-        if (other.gameObject.CompareTag("EnemyBlock")) 
-        { 
+        if (other.gameObject.CompareTag("EnemyBlock"))
+        {
             moveSpeed = -moveSpeed;
         }
 
@@ -50,11 +52,11 @@ public class EnemyMovement : MonoBehaviour
             moveSpeed = -moveSpeed;
         }
 
-        if(other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
             other.gameObject.GetComponent<PlayerMovement>().TakeDamage(damageGiven);
 
-            if(other.transform.position.x > transform.position.x)
+            if (other.transform.position.x > transform.position.x)
             {
                 other.gameObject.GetComponent<PlayerMovement>().TakeKnockback(knockbackForce, upwardForce);
             }
@@ -69,7 +71,7 @@ public class EnemyMovement : MonoBehaviour
     //Om den triggar något går den hit. 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             other.GetComponent<Rigidbody2D>().velocity = new Vector2(other.GetComponent<Rigidbody2D>().velocity.x, 0);
             other.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, bounciness));
@@ -80,7 +82,8 @@ public class EnemyMovement : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             canMove = false;
             Destroy(gameObject, 0.4f);
-           
+            enemyCounterScript.AddKill(); // NYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
+
         }
     }
 
