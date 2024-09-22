@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 281b7e9f76a6ac140bb861aa2bd3d502, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delayBeforeMove: 3
+  delayBeforeMove: 1.6
   speed: 5
   boss: {fileID: 0}
 --- !u!1102 &-8332782875738761192

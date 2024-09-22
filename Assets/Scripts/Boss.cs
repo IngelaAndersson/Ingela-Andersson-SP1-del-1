@@ -14,6 +14,7 @@ public class Boss : MonoBehaviour
     [SerializeField] private Slider healthSlider;
     [SerializeField] private AudioSource victoryAudio;
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip hitSound;
 
     public float normalSpeed = 2.0f;  
     private float invincibilityTimer = 0f;
@@ -58,7 +59,10 @@ public class Boss : MonoBehaviour
 
         bossAnimator.SetTrigger("Hit");
 
+
         UpdateHealthBar();
+
+        audioSource.PlayOneShot(hitSound, 1f);
 
 
         if (health <= 0)

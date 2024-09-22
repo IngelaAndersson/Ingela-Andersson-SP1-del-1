@@ -6,30 +6,37 @@ using UnityEngine.UI;
 
 public class EnterBossFight : MonoBehaviour
 {
-    public GameObject boss;
     public float delay = 0.2f;
+    public GameObject boss;
     public GameObject bossHealthBar;
     public CameraBossFight cameraController;
-
+    private Animator gateAnim;
+    private bool hasPlayedAnimation = false;
+   
+    [SerializeField] private float delayTime = 2.0f;
     [SerializeField] private GameObject musicPlayer;
     [SerializeField] private AudioSource audioSource;
  
-
-    // Reference to the player tag or GameObject
     public string playerTag = "Player";
 
     private void Start()
     {
         audioSource.Stop();
+        gateAnim = GetComponent<Animator>();
+
     }
-    // Method that detects when something enters the trigger area
+    
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Check if the thing entering the trigger is the player
-        if (other.CompareTag(playerTag))
+
+        if (other.CompareTag(playerTag) && !hasPlayedAnimation)
         {
+            hasPlayedAnimation = true;
+            gateAnim.SetTrigger("CloseGate");
+
             musicPlayer.SetActive(false);
-            audioSource.Play();
+            PlayAudioWithDelay();
+
             Invoke("ActivateBoss", delay);
 
             if (bossHealthBar != null)
@@ -41,7 +48,12 @@ public class EnterBossFight : MonoBehaviour
             cameraController.StartBossCameraTransition();
         }
     }
-     private void ActivateBoss()
+
+    public void PlayAudioWithDelay()
+    {
+        audioSource.PlayDelayed(delayTime);
+    }
+    private void ActivateBoss()
     {
         boss.SetActive(true);
 
