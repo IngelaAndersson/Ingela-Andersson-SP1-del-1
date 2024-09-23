@@ -9,7 +9,7 @@ public class BossMovement : StateMachineBehaviour
     public float delayBeforeMove = 3f;
     public float speed = 5f;
     private bool canMove = false;
-    private float elapsedTime = 0f; // Time elapsed since entering the state
+    private float elapsedTime = 0f; 
     private Boss bossScript;
 
     Transform player;
@@ -27,24 +27,19 @@ public class BossMovement : StateMachineBehaviour
 
     }
 
-  
-
-
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
 
-        // Accumulate the elapsed time
+      
         elapsedTime += Time.deltaTime;
 
-        // Check if the elapsed time exceeds the delay
         if (elapsedTime >= delayBeforeMove)
         {
-            // Allow the boss to move after the delay
+  
             canMove = true;
         }
 
-        // Move the boss only if canMove is true
         if (canMove)
         {
             MoveBoss(animator);
@@ -53,7 +48,7 @@ public class BossMovement : StateMachineBehaviour
         {
             if (bossScript != null)
             {
-                // Move the boss based on the current movement speed
+             
                 bossScript.transform.Translate(Vector3.left * speed * Time.deltaTime);
             }
 

@@ -10,7 +10,8 @@ public class EnterBossFight : MonoBehaviour
     public GameObject boss;
     public GameObject bossHealthBar;
     public CameraBossFight cameraController;
-    private Animator gateAnim;
+    public Animator gateAnim;
+    public Animator exitGateAnim;
     private bool hasPlayedAnimation = false;
    
     [SerializeField] private float delayTime = 2.0f;
@@ -22,8 +23,8 @@ public class EnterBossFight : MonoBehaviour
     private void Start()
     {
         audioSource.Stop();
-        gateAnim = GetComponent<Animator>();
-
+        gateAnim = transform.Find("Gate").GetComponent<Animator>();
+        exitGateAnim = transform.Find("ExitGate").GetComponent<Animator>();
     }
     
     private void OnTriggerEnter2D(Collider2D other)
@@ -33,6 +34,7 @@ public class EnterBossFight : MonoBehaviour
         {
             hasPlayedAnimation = true;
             gateAnim.SetTrigger("CloseGate");
+            exitGateAnim.SetTrigger("CloseExit");
 
             musicPlayer.SetActive(false);
             PlayAudioWithDelay();
@@ -44,7 +46,6 @@ public class EnterBossFight : MonoBehaviour
                 bossHealthBar.SetActive(true);
             }
 
-            // Start camera transition
             cameraController.StartBossCameraTransition();
         }
     }
@@ -56,8 +57,6 @@ public class EnterBossFight : MonoBehaviour
     private void ActivateBoss()
     {
         boss.SetActive(true);
-
-        // Optionally, disable the trigger to prevent retriggering
         gameObject.SetActive(false);
     }
 }
