@@ -18,7 +18,6 @@ public class EnemyMovement : MonoBehaviour
     private void Start()
     {
         rend = GetComponent<SpriteRenderer>();
- 
     }
 
     private void FixedUpdate()
