@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private int startingHealth = 5;
     private int currentHealth = 0;
     public int applesCollected = 0;
+    
 
     private Rigidbody2D rgbd;
     private SpriteRenderer rend;
@@ -108,10 +110,10 @@ public class PlayerMovement : MonoBehaviour
             Instantiate(appleParticles, other.transform.position, Quaternion.identity);
         }
 
-        if(other.CompareTag("Health"))
+        if (other.CompareTag("Health"))
         {
             RestoreHealth(other.gameObject);
-        }
+        }   
 
     }
 
@@ -144,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void TakeKnockback(float knockbackForce, float upwards)
+        public void TakeKnockback(float knockbackForce, float upwards)
     {
         canMove = false;
         rgbd.AddForce(new Vector2(knockbackForce, upwards));
