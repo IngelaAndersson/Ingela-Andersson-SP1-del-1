@@ -8034,12 +8034,7 @@ MonoBehaviour:
   finishedText: {fileID: 1574321113}
   unfinishedText: {fileID: 1927746723}
   questGoal: 10
-<<<<<<< Updated upstream
   levelToLoad: 0
-=======
-  levelToLoad: 3
-  enemycount: {fileID: 1617307802}
->>>>>>> Stashed changes
 --- !u!95 &561226160
 Animator:
   serializedVersion: 5

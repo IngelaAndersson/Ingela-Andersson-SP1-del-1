@@ -374,11 +374,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &14810297 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8715152706816766854, guid: ede796f42f3498b40ab9023d56bd8e50, type: 3}
-  m_PrefabInstance: {fileID: 175958848}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &15847523
 GameObject:
   m_ObjectHideFlags: 0
@@ -3461,7 +3456,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 886282908}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 111633357795406330, guid: ede796f42f3498b40ab9023d56bd8e50, type: 3}
       propertyPath: m_Name
@@ -3485,15 +3480,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8715152706816766854, guid: ede796f42f3498b40ab9023d56bd8e50, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8715152706816766854, guid: ede796f42f3498b40ab9023d56bd8e50, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8715152706816766854, guid: ede796f42f3498b40ab9023d56bd8e50, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8715152706816766854, guid: ede796f42f3498b40ab9023d56bd8e50, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7862,7 +7857,6 @@ MonoBehaviour:
   unfinishedText: {fileID: 1927746723}
   questGoal: 10
   levelToLoad: 2
-  enemycount: {fileID: 0}
 --- !u!95 &561226160
 Animator:
   serializedVersion: 5
@@ -11541,7 +11535,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 680933372}
-  - {fileID: 14810297}
   - {fileID: 99504211}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -33660,3 +33653,4 @@ SceneRoots:
   - {fileID: 886282908}
   - {fileID: 571577358}
   - {fileID: 1846468778}
+  - {fileID: 175958848}
