@@ -13,6 +13,9 @@ public class EnterBossFight : MonoBehaviour
     public Animator gateAnim;
     public Animator exitGateAnim;
     private bool hasPlayedAnimation = false;
+
+    [SerializeField] private Gate firstGate;
+    [SerializeField] private Gate secondGate;
    
     [SerializeField] private float delayTime = 2.0f;
     [SerializeField] private GameObject musicPlayer;
@@ -23,8 +26,8 @@ public class EnterBossFight : MonoBehaviour
     private void Start()
     {
         audioSource.Stop();
-        gateAnim = transform.Find("Gate").GetComponent<Animator>();
-        exitGateAnim = transform.Find("ExitGate").GetComponent<Animator>();
+        gateAnim = GetComponent<Animator>();
+        exitGateAnim = GetComponent<Animator>();
     }
     
     private void OnTriggerEnter2D(Collider2D other)
@@ -33,8 +36,10 @@ public class EnterBossFight : MonoBehaviour
         if (other.CompareTag(playerTag) && !hasPlayedAnimation)
         {
             hasPlayedAnimation = true;
-            gateAnim.SetTrigger("CloseGate");
-            exitGateAnim.SetTrigger("CloseExit");
+            //gateAnim.SetTrigger("CloseGate");
+            //exitGateAnim.SetTrigger("CloseExit");
+            firstGate.CloseGate();
+            secondGate.CloseGate();
 
             musicPlayer.SetActive(false);
             PlayAudioWithDelay();

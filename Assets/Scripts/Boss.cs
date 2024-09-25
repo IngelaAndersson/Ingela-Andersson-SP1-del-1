@@ -29,6 +29,11 @@ public class Boss : MonoBehaviour
     public Animator bossAnimator;
     private SpriteRenderer spriteRenderer;
     public Transform player;
+    //public Animator gateAnim;
+    //public Animator exitGateAnim;
+
+    [SerializeField] private Gate firstGate;
+    [SerializeField] private Gate secondGate;
 
     public bool isFlipped = false;
     private bool isInvincible = false;  
@@ -42,8 +47,10 @@ public class Boss : MonoBehaviour
         initialScale = transform.localScale;
 
         animator = GetComponent<Animator>();
-    }
 
+        //gateAnim = GetComponent<Animator>();
+        //exitGateAnim = GetComponent<Animator>();
+    }
 
     public void TakeDamage(float damageAmount)
     {
@@ -75,6 +82,13 @@ public class Boss : MonoBehaviour
            
             Destroy(gameObject, 2f);
 
+            //gateAnim.SetTrigger("OpenGate");
+
+            //exitGateAnim.SetTrigger("OpenExit");
+
+            firstGate.OpenGate();
+            secondGate.OpenGate();
+
             audioSource.Pause();
 
             victoryAudio.Play();
@@ -94,8 +108,6 @@ public class Boss : MonoBehaviour
 
         // Enlarge the boss
         transform.localScale = enlargedScale;
-
-        Debug.Log("Boss has entered the second stage!");
     }
 
     private void StartInvincibility()
@@ -163,7 +175,6 @@ public class Boss : MonoBehaviour
 
 
     }
-
 
     private void OnTriggerEnter2D(Collider2D other)
     {

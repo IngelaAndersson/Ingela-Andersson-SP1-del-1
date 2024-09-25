@@ -5673,6 +5673,7 @@ GameObject:
   - component: {fileID: 436426742}
   - component: {fileID: 436426741}
   - component: {fileID: 436426740}
+  - component: {fileID: 436426743}
   m_Layer: 0
   m_Name: EnterBossFight
   m_TagString: Untagged
@@ -5698,6 +5699,8 @@ MonoBehaviour:
   cameraController: {fileID: 519420034}
   gateAnim: {fileID: 1020682670}
   exitGateAnim: {fileID: 1353504510}
+  firstGate: {fileID: 1020682673}
+  secondGate: {fileID: 1353504513}
   delayTime: 2
   musicPlayer: {fileID: 1846468776}
   audioSource: {fileID: 1711299168}
@@ -5762,6 +5765,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &436426743
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436426739}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &436540327
 GameObject:
   m_ObjectHideFlags: 0
@@ -21071,6 +21095,7 @@ GameObject:
   - component: {fileID: 1020682671}
   - component: {fileID: 1020682670}
   - component: {fileID: 1020682672}
+  - component: {fileID: 1020682673}
   m_Layer: 0
   m_Name: Gate
   m_TagString: Untagged
@@ -21162,6 +21187,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.1342182, y: 0.2965662}
   m_EdgeRadius: 0
+--- !u!114 &1020682673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020682669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca40425ee91e32d438e49099ed4bdbf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gateAnim: {fileID: 0}
 --- !u!1 &1021415403
 GameObject:
   m_ObjectHideFlags: 0
@@ -21829,6 +21867,8 @@ MonoBehaviour:
   invincibleColor: {r: 0.94716984, g: 0.41997153, b: 0.41997153, a: 0.7372549}
   bossAnimator: {fileID: 1063196732}
   player: {fileID: 1375465610}
+  firstGate: {fileID: 1020682673}
+  secondGate: {fileID: 1353504513}
   isFlipped: 0
 --- !u!70 &1063196740
 CapsuleCollider2D:
@@ -24746,6 +24786,7 @@ GameObject:
   - component: {fileID: 1353504512}
   - component: {fileID: 1353504511}
   - component: {fileID: 1353504510}
+  - component: {fileID: 1353504513}
   m_Layer: 0
   m_Name: ExitGate
   m_TagString: Untagged
@@ -24837,6 +24878,19 @@ Transform:
   - {fileID: 2044162863}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
+--- !u!114 &1353504513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353504509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca40425ee91e32d438e49099ed4bdbf8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gateAnim: {fileID: 0}
 --- !u!1 &1354401886
 GameObject:
   m_ObjectHideFlags: 0
@@ -35182,5 +35236,5 @@ SceneRoots:
   - {fileID: 1063196734}
   - {fileID: 1942064576}
   - {fileID: 1020682671}
-  - {fileID: 899327020}
   - {fileID: 1353504512}
+  - {fileID: 899327020}
