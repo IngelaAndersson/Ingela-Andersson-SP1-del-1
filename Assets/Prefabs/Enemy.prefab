@@ -127,6 +127,8 @@ MonoBehaviour:
   knockbackForce: 400
   upwardForce: 100
   damageGiven: 1
+  enemyDeath: {fileID: 8300000, guid: 8c621efd9e513da40a7669b98e6822b0, type: 3}
+  audioSource: {fileID: 0}
 --- !u!50 &3148452489377825022
 Rigidbody2D:
   serializedVersion: 4

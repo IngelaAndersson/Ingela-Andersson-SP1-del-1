@@ -10,8 +10,10 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float knockbackForce = 200f;
     [SerializeField] private float upwardForce = 100f;
     [SerializeField] private int damageGiven = 1;
+ 
     private SpriteRenderer rend;
     private bool canMove = true;
+   
 
     private void Start()
     {
@@ -39,7 +41,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        //Vänder riktning om kolliderar med något som har taggen "EnemyBlock".
+        //Vänder riktning om kolliderar med något.
         if (other.gameObject.CompareTag("EnemyBlock")) 
         { 
             moveSpeed = -moveSpeed;
@@ -80,7 +82,6 @@ public class EnemyMovement : MonoBehaviour
             GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             canMove = false;
             Destroy(gameObject, 0.4f);
-           
         }
     }
 
