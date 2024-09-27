@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/Trampoline.prefab.meta
 guid: fb24bb0df890e5343bd0bbf62e190bc2
+========
+guid: dc4604c019f40194dbd44dfe34d67537
+>>>>>>>> parent of 37b0701 (Reapply "Merge branch 'main' of https://github.com/IngelaAndersson/Ingela-Andersson-SP1-del-1"):Assets/Prefabs/MovingPlatform.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 
