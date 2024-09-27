@@ -7305,6 +7305,7 @@ MonoBehaviour:
   unfinishedText: {fileID: 1927746723}
   questGoal: 10
   levelToLoad: 0
+  enemycount: {fileID: 0}
 --- !u!95 &561226160
 Animator:
   serializedVersion: 5
@@ -33011,7 +33012,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5743353102364417655, guid: fb24bb0df890e5343bd0bbf62e190bc2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.9660224
+      value: -1.003
       objectReference: {fileID: 0}
     - target: {fileID: 5743353102364417655, guid: fb24bb0df890e5343bd0bbf62e190bc2, type: 3}
       propertyPath: m_LocalPosition.z
