@@ -7,11 +7,7 @@ public class QuestChecker : MonoBehaviour
 {
     [SerializeField] private GameObject dialogueBox, finishedText, unfinishedText;
     [SerializeField] private int questGoal = 10;
-    private int scene;
     [SerializeField] private int levelToLoad;
-
-    public EnemyCounter enemycount;
-
 
     private Animator anim;
     private bool levelIsLoading = false;
@@ -19,7 +15,6 @@ public class QuestChecker : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
-        scene = SceneManager.GetActiveScene().buildIndex;
     }
 
     //Om spelaren går in i området visas rutan.
@@ -27,68 +22,28 @@ public class QuestChecker : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Spelaren gick in i triggern!");
-
-            // Kolla om vi är på level 1
-            if (scene == 1)
+            //Går in på spelarens komponenter, kollar hur många äpplen vi samlat, och kollar om det
+            //är större eller lika mycket som vårat goal (10)
+            if(other.GetComponent<PlayerMovement>().applesCollected >= questGoal)
             {
-                Debug.Log("Vi är på level 1, kollar antal äpplen.");
-
-                if (other.GetComponent<PlayerMovement>().applesCollected >= questGoal)
-                {
-                    Debug.Log("Quest för äpplen klart!");
-
-                    dialogueBox.SetActive(true);
-                    finishedText.SetActive(true);
-                    unfinishedText.SetActive(false);
-                    anim.SetTrigger("Flag");
-                    Invoke("LoadNextLevel", 4.0f);
-                    levelIsLoading = true;
-                }
-                else
-                {
-                    Debug.Log("Inte tillräckligt många äpplen samlade.");
-
-                    dialogueBox.SetActive(true);
-                    unfinishedText.SetActive(true);
-                    finishedText.SetActive(false);
-                }
-
+                dialogueBox.SetActive(true);
+                finishedText.SetActive(true);
+                anim.SetTrigger("Flag");
+                Invoke("LoadNextLevel", 4.0f);
+                levelIsLoading = true;
             }
-            // Om vi är på level 2
-            else if (scene == 2)  // Kollar specifikt för Level 2
+            else
             {
-
-                Debug.Log("Vi är på level 2, kollar antal kills.");
-                Debug.Log("Antal fiender dödade: " + enemycount.kills);
-
-                if (enemycount.kills >= questGoal)  // Kollar antalet dödade fiender
-                {
-                    Debug.Log("Quest för fiender klart!");
-
-                    dialogueBox.SetActive(true);
-                    finishedText.SetActive(true);  // Visa "quest klart"-texten
-                    unfinishedText.SetActive(false);  // Dölja "quest ej klart"-texten
-                    anim.SetTrigger("Flag");  // Trigga animation
-                    Invoke("LoadNextLevel", 4.0f);  // Ladda nästa scen efter 4 sekunder
-                    levelIsLoading = true;
-                }
-                else
-                {
-                    Debug.Log("Inte tillräckligt många fiender dödade.");
-
-                    dialogueBox.SetActive(true);
-                    unfinishedText.SetActive(true);  // Visa "quest ej klart"-texten
-                    finishedText.SetActive(false);  // Dölja "quest klart"-texten
-                }
+                dialogueBox.SetActive(true);
+                unfinishedText.SetActive(true);
             }
         }
     }
 
     private void LoadNextLevel()
     {
-        Debug.Log("Laddar nästa scen: " + levelToLoad);
         SceneManager.LoadScene(levelToLoad);
+
     }
 
     //Om spelaren går ut ur området försvinner rutan.
