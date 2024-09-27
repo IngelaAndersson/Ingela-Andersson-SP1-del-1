@@ -39,7 +39,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        //Vänder riktning om kolliderar med något.
+        //Vänder riktning om kolliderar med något som har taggen "EnemyBlock".
         if (other.gameObject.CompareTag("EnemyBlock")) 
         { 
             moveSpeed = -moveSpeed;
