@@ -73,6 +73,44 @@ public class BossMovements : MonoBehaviour
         }
     }
 
+    //private void MoveBoss()
+    //{
+    //    if (!boss.isSecondStage)
+    //    {
+    //        boss.LookAtPlayer();
+    //        secondStageMovement = false;
+    //        target = new Vector2(player.position.x, rb.position.y);
+    //        newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
+
+    //        rb.MovePosition(newPos);
+    //    }
+    //    else
+    //    {
+    //        secondStageMovement = true;
+    //        speed = 8;
+    //        if (moveToCollider)
+    //        {
+    //            target = new Vector2(collider1.transform.position.x, rb.position.y);
+    //            newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
+    //            rb.MovePosition(newPos);
+    //            if (transform.position.x > 0)
+    //            {
+    //                rend.flipX = false;
+    //            }
+    //        }
+    //        if (!moveToCollider)
+    //        {
+
+    //            target = new Vector2(collider2.transform.position.x, rb.position.y);
+    //            newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
+    //            rb.MovePosition(newPos);
+    //            if (transform.position.x < 0)
+    //            {
+    //                rend.flipX = true;
+    //            }
+    //        }
+    //    }
+    //}
     private void MoveBoss()
     {
         if (!boss.isSecondStage)
@@ -87,30 +125,43 @@ public class BossMovements : MonoBehaviour
         else
         {
             secondStageMovement = true;
+            speed = 8;
+
             if (moveToCollider)
             {
-                speed = 8;
                 target = new Vector2(collider1.transform.position.x, rb.position.y);
                 newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
                 rb.MovePosition(newPos);
-                if (transform.position.x > 0)
+
+                // Check for flipping at specified positions
+                if (transform.position.x >= 16.9f)
                 {
-                    rend.flipX = false;
+                    rend.flipX = false; // Facing right
+                }
+                else if (transform.position.x <= -6.59f)
+                {
+                    rend.flipX = true; // Facing left
                 }
             }
-            if (!moveToCollider)
+            else
             {
-                speed = 8;
                 target = new Vector2(collider2.transform.position.x, rb.position.y);
                 newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
                 rb.MovePosition(newPos);
-                if (transform.position.x < 0)
+
+                // Check for flipping at specified positions
+                if (transform.position.x >= 16.9f)
                 {
-                    rend.flipX = true;
+                    rend.flipX = false; // Facing right
+                }
+                else if (transform.position.x <= -6.59f)
+                {
+                    rend.flipX = true; // Facing left
                 }
             }
         }
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Check if collision is with the "EnemyBlock" and it's the second stage

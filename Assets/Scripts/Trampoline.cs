@@ -5,7 +5,14 @@ using UnityEngine;
 public class Trampoline : MonoBehaviour
 {
     [SerializeField] private float jumpForce = 200f;
+    [SerializeField] private AudioClip trampolineSound;
 
+    private AudioSource audioSource;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         //Om det är spelaren som hoppar på trampolinen sparas spelarens rigidbody i denna.
@@ -18,6 +25,8 @@ public class Trampoline : MonoBehaviour
             playerRigidbody.AddForce(new Vector2 (0, jumpForce));
             //Går till animationen för trampolinen och spelar den.
             GetComponent<Animator>().SetTrigger("Jump");
+            audioSource.PlayOneShot(trampolineSound, 0.5f);
+
         }
     }
 }
