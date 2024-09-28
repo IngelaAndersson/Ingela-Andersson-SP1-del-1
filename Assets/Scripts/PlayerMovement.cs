@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isGrounded;
     private bool canMove;
     private int startingHealth = 5;
-    private int currentHealth = 0;
+    public int currentHealth = 0;
     public int applesCollected = 0;
     private string sceneName;
 
