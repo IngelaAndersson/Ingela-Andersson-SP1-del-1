@@ -2549,7 +2549,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: ce18bf9de2c417d43897f62eef6091aa, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.52
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -5547,9 +5547,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\"You did it! The way is clear, and you're finally free to leave the cave.
+  m_text: "You did it! The way is clear, and you're finally free to leave the cave.
     Good luck out there, little frog\n\u2014  may your journey be safe and full of
-    adventures!\"\n\n"
+    adventures!\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c89233a0e04ee48a6aaef81b2046fe, type: 2}
   m_sharedMaterial: {fileID: 1406193190306189333, guid: 43c89233a0e04ee48a6aaef81b2046fe, type: 2}
@@ -6863,10 +6863,10 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 36
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
@@ -26959,7 +26959,7 @@ MonoBehaviour:
   secondGate: {fileID: 1353504513}
   bossCamera: {fileID: 519420034}
   normalSpeed: 2
-  invincibilityDuration: 3
+  invincibilityDuration: 2
   enlargedScale: {x: 0.3, y: 0.3, z: 0.5}
   trampoline: {fileID: 956368906}
   bossMovement: {fileID: 1063196743}
@@ -31052,7 +31052,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d803902b60c30084d9949435ba561e8d, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.592
+  m_Volume: 0.51
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -31376,8 +31376,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\"You're almost free, little frog. Defeat the beast ahead, and the cave\u2019s
-    exit will be yours. Be brave\n\u2014 freedom is one fight away.\""
+  m_text: "You're almost free, little frog. Defeat the beast ahead, and the cave\u2019s
+    exit will be yours. Be brave\n\u2014 freedom is one fight away."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 43c89233a0e04ee48a6aaef81b2046fe, type: 2}
   m_sharedMaterial: {fileID: 1406193190306189333, guid: 43c89233a0e04ee48a6aaef81b2046fe, type: 2}

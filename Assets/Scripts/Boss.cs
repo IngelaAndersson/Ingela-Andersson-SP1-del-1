@@ -72,7 +72,7 @@ public class Boss : MonoBehaviour
 
         UpdateHealthBar();
 
-        audioSource.PlayOneShot(hitSound, 1f);
+        audioSource.PlayOneShot(hitSound, 0.5f);
 
 
         if (health <= 0)
