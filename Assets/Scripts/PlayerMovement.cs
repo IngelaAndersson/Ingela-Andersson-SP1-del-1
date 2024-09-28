@@ -109,6 +109,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(other.gameObject);
             applesCollected++;
             appleText.text = "" + applesCollected;
+            audioSource.pitch = Random.Range(0.8f, 1.2f);
             audioSource.PlayOneShot(pickupSound, 0.1f);
             //Instantiate klonar ett object.
             Instantiate(appleParticles, other.transform.position, Quaternion.identity);
@@ -133,6 +134,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rgbd.AddForce(new Vector2(0, jumpForce));
         //Spelar upp hopp-ljudet
+        audioSource.pitch = Random.Range(0.8f, 1.2f);
         audioSource.PlayOneShot(jumpSound, 0.5f);
         Instantiate(dustParticles, transform.position, dustParticles.transform.localRotation);
     }

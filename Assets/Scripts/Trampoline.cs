@@ -25,6 +25,7 @@ public class Trampoline : MonoBehaviour
             playerRigidbody.AddForce(new Vector2 (0, jumpForce));
             //Går till animationen för trampolinen och spelar den.
             GetComponent<Animator>().SetTrigger("Jump");
+            audioSource.pitch = Random.Range(0.8f, 1.2f);
             audioSource.PlayOneShot(trampolineSound, 0.5f);
 
         }

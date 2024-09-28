@@ -20,6 +20,7 @@ public class Boss : MonoBehaviour
     [SerializeField] private bool isInvincible = false;
     [SerializeField] private Gates firstGate;
     [SerializeField] private Gates secondGate;
+    [SerializeField] CameraBossFight bossCamera;
 
     public float normalSpeed = 2.0f;
     private float invincibilityTimer = 0f;
@@ -27,7 +28,8 @@ public class Boss : MonoBehaviour
     public Vector3 enlargedScale = new Vector3(2f, 2f, 2f);
     private Vector3 initialScale;
     private Animator animator;
-    private BossMovements bossMovement;
+    public GameObject trampoline;
+    public BossMovements bossMovement;
     public bool isSecondStage = false;
     public Color invincibleColor = Color.red;
 
@@ -49,7 +51,9 @@ public class Boss : MonoBehaviour
         bossMovement = GetComponent<BossMovements>();
 
         animator = GetComponent<Animator>();
+
     }
+
 
     public void BossTakeDamage(float damageAmount)
     {
@@ -89,6 +93,7 @@ public class Boss : MonoBehaviour
             victoryAudio.Play();
 
 
+
         }
         else
         {
@@ -102,6 +107,8 @@ public class Boss : MonoBehaviour
         isSecondStage = true;
 
         transform.localScale = enlargedScale;
+
+        trampoline.SetActive(false);
     }
 
     private void StartInvincibility()

@@ -48,6 +48,7 @@ public class BossMovements : MonoBehaviour
         {
             MoveBoss();
         }
+
         //if (boss.isSecondStage)
         //{
         //    // Ensure movement is dependent on speed direction (flipped after collision)
@@ -111,7 +112,7 @@ public class BossMovements : MonoBehaviour
     //        }
     //    }
     //}
-    private void MoveBoss()
+    public void MoveBoss()
     {
         if (!boss.isSecondStage)
         {

@@ -8,6 +8,7 @@ public class EnterBossFight : MonoBehaviour
 {
     public float delay = 0.2f;
     public GameObject boss;
+    public GameObject trampoline;
     public GameObject bossHealthBar;
     public CameraBossFight cameraController;
     public Animator gateAnim;
@@ -43,6 +44,8 @@ public class EnterBossFight : MonoBehaviour
 
             musicPlayer.SetActive(false);
             PlayAudioWithDelay();
+
+            trampoline.SetActive(true);
 
             Invoke("ActivateBoss", delay);
 
