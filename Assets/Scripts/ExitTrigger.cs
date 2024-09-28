@@ -11,21 +11,12 @@ public class ExitTrigger : MonoBehaviour
     public float fadeDuration = 1.5f;  
     private bool outroStarted = false;
     public SpriteRenderer playerSprite;
-
-   [SerializeField] PlayerMovement playerMovement;
-
-    private void Start()
-    {
-        playerMovement.enabled = true;
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
        
         if (other.CompareTag("Player") && !outroStarted)
         {
-            playerMovement.enabled = false; 
-            
+
             playerSprite = other.GetComponent<SpriteRenderer>();
 
             StartOutro();  

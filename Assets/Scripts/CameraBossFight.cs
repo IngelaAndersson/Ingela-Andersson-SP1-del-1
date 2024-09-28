@@ -8,22 +8,22 @@ public class CameraBossFight : MonoBehaviour
     public float targetSize = 10f;   
     public float transitionSpeed = 2f; 
 
-    private Camera cam;
+    public Camera bossCamera;
     private bool inTransition = false;
 
     void Start()
     {
-        cam = Camera.main;
+        bossCamera = Camera.main;
     }
 
     void Update()
     {
         if (inTransition)
         {
-            cam.transform.position = Vector3.Lerp(cam.transform.position, targetPosition.position, Time.deltaTime * transitionSpeed);
-            cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, targetSize, Time.deltaTime * transitionSpeed);
+            bossCamera.transform.position = Vector3.Lerp(bossCamera.transform.position, targetPosition.position, Time.deltaTime * transitionSpeed);
+            bossCamera.orthographicSize = Mathf.Lerp(bossCamera.orthographicSize, targetSize, Time.deltaTime * transitionSpeed);
 
-            if (Vector3.Distance(cam.transform.position, targetPosition.position) < 0.1f && Mathf.Abs(cam.orthographicSize - targetSize) < 0.1f)
+            if (Vector3.Distance(bossCamera.transform.position, targetPosition.position) < 0.1f && Mathf.Abs(bossCamera.orthographicSize - targetSize) < 0.1f)
             {
                 inTransition = false; 
             }
