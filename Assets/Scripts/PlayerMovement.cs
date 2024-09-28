@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
@@ -29,7 +30,8 @@ public class PlayerMovement : MonoBehaviour
     private int startingHealth = 5;
     private int currentHealth = 0;
     public int applesCollected = 0;
-    
+    private string sceneName;
+
 
     private Rigidbody2D rgbd;
     private SpriteRenderer rend;
@@ -40,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sceneName = SceneManager.GetActiveScene().name;
         canMove = true;
         currentHealth = startingHealth;
 
@@ -161,10 +164,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void Respawn()
     {
-        currentHealth = startingHealth;
-        UpdateHealthBar();
-        transform.position = spawnPosition.position;
-        rgbd.velocity = Vector2.zero;
+        if (sceneName != "Level3")
+        {
+            currentHealth = startingHealth;
+            UpdateHealthBar();
+            transform.position = spawnPosition.position;
+            rgbd.velocity = Vector2.zero;
+        }
     }
 
     private void RestoreHealth(GameObject healthPickup)
