@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform spawnPosition;
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private AudioClip jumpSound, pickupSound;
+    [SerializeField] private AudioClip healthSound;
     [SerializeField] private GameObject appleParticles, dustParticles;
 
     [SerializeField] private Slider healthSlider;
@@ -186,6 +187,7 @@ public class PlayerMovement : MonoBehaviour
             int healthToRestore = healthPickup.GetComponent<HealthPickup>().healthAmount;
             currentHealth += 3;
             UpdateHealthBar();
+            audioSource.PlayOneShot(healthSound, 0.7f);
             Destroy(healthPickup);
 
             if(currentHealth >= startingHealth)
