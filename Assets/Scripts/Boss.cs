@@ -18,8 +18,8 @@ public class Boss : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip hitSound;
     [SerializeField] private bool isInvincible = false;
-    [SerializeField] private Gate firstGate;
-    [SerializeField] private Gate secondGate;
+    [SerializeField] private Gates firstGate;
+    [SerializeField] private Gates secondGate;
 
     public float normalSpeed = 2.0f;
     private float invincibilityTimer = 0f;
