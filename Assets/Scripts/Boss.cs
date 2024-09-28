@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {
-    [SerializeField] private float bounciness = 100;
+    //[SerializeField] private float bounciness = 100;
     [SerializeField] private float knockbackForce = 200f;
     [SerializeField] private float upwardForce = 100f;
     [SerializeField] private int damageGiven = 1;

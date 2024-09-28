@@ -630,7 +630,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &118811095
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1467,6 +1467,83 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1382439745503124408, guid: 8ebbf2ff86b3a1b4fa96534afe16e8dc, type: 3}
   m_PrefabInstance: {fileID: 2929221360990709252}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &189096790
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 189096792}
+  - component: {fileID: 189096791}
+  m_Layer: 0
+  m_Name: ExitTrigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &189096791
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189096790}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.08897209, y: 0.9887357}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.5695, y: 2.9774709}
+  m_EdgeRadius: 0
+--- !u!4 &189096792
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 189096790}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 40.17, y: -0.48, z: 2.103293}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &206729036
 GameObject:
   m_ObjectHideFlags: 0
@@ -2876,6 +2953,8 @@ MonoBehaviour:
   cameraController: {fileID: 519420034}
   gateAnim: {fileID: 1020682670}
   exitGateAnim: {fileID: 1353504510}
+  firstGate: {fileID: 1020682673}
+  secondGate: {fileID: 1353504513}
   delayTime: 2
   musicPlayer: {fileID: 1846468776}
   audioSource: {fileID: 1711299168}
@@ -25696,6 +25775,7 @@ GameObject:
   - component: {fileID: 1020682671}
   - component: {fileID: 1020682670}
   - component: {fileID: 1020682672}
+  - component: {fileID: 1020682673}
   m_Layer: 0
   m_Name: Gate
   m_TagString: Untagged
@@ -25787,6 +25867,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.1342182, y: 0.2965662}
   m_EdgeRadius: 0
+--- !u!114 &1020682673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1020682669}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d21b6ef5999a1eb47b365d48fa117d77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gateAnim: {fileID: 1020682670}
 --- !u!1 &1021721426
 GameObject:
   m_ObjectHideFlags: 0
@@ -26185,7 +26278,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50957655d3848ca4489e936e4dc9fa83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounciness: 500
   knockbackForce: 400
   upwardForce: 200
   damageGiven: 1
@@ -26196,8 +26288,8 @@ MonoBehaviour:
   audioSource: {fileID: 1711299168}
   hitSound: {fileID: 8300000, guid: 5a19d8822a724a84a95a4214a06e714c, type: 3}
   isInvincible: 0
-  firstGate: {fileID: 0}
-  secondGate: {fileID: 0}
+  firstGate: {fileID: 1020682673}
+  secondGate: {fileID: 1353504513}
   normalSpeed: 2
   invincibilityDuration: 3
   enlargedScale: {x: 0.5, y: 0.5, z: 0.5}
@@ -27293,6 +27385,7 @@ GameObject:
   - component: {fileID: 1353504512}
   - component: {fileID: 1353504511}
   - component: {fileID: 1353504510}
+  - component: {fileID: 1353504513}
   m_Layer: 0
   m_Name: ExitGate
   m_TagString: Untagged
@@ -27384,6 +27477,19 @@ Transform:
   - {fileID: 2044162863}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 270}
+--- !u!114 &1353504513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353504509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d21b6ef5999a1eb47b365d48fa117d77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gateAnim: {fileID: 1353504510}
 --- !u!1 &1375465608
 GameObject:
   m_ObjectHideFlags: 0
@@ -27399,6 +27505,7 @@ GameObject:
   - component: {fileID: 1375465613}
   - component: {fileID: 1375465614}
   - component: {fileID: 1375465615}
+  - component: {fileID: 1375465616}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -27685,6 +27792,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1375465616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375465608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fd8bf06af31a66449c5bad8627079c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMovement: {fileID: 1375465613}
+  playerAnimator: {fileID: 1375465614}
 --- !u!1 &1409409922
 GameObject:
   m_ObjectHideFlags: 0
@@ -31720,7 +31841,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1989215791
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32646,3 +32767,4 @@ SceneRoots:
   - {fileID: 899327020}
   - {fileID: 1353504512}
   - {fileID: 1991329498}
+  - {fileID: 189096792}
