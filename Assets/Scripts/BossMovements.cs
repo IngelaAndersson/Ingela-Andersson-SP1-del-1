@@ -127,6 +127,8 @@ public class BossMovements : MonoBehaviour
         {
             secondStageMovement = true;
             speed = 8;
+            boss.LookAtPlayer();
+            
 
             if (moveToCollider)
             {
@@ -134,15 +136,15 @@ public class BossMovements : MonoBehaviour
                 newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
                 rb.MovePosition(newPos);
 
-                // Check for flipping at specified positions
-                if (transform.position.x >= 16.9f)
-                {
-                    rend.flipX = false; // Facing right
-                }
-                else if (transform.position.x <= -6.59f)
-                {
-                    rend.flipX = true; // Facing left
-                }
+            //    // Check for flipping at specified positions
+            //    if (transform.position.x >= 16.9f)
+            //    {
+            //        rend.flipX = false; // Facing right
+            //    }
+            //    else if (transform.position.x <= -6.59f)
+            //    {
+            //        rend.flipX = true; // Facing left
+            //   }
             }
             else
             {
@@ -150,16 +152,17 @@ public class BossMovements : MonoBehaviour
                 newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
                 rb.MovePosition(newPos);
 
-                // Check for flipping at specified positions
-                if (transform.position.x >= 16.9f)
-                {
-                    rend.flipX = false; // Facing right
-                }
-                else if (transform.position.x <= -6.59f)
-                {
-                    rend.flipX = true; // Facing left
-                }
+            //    // Check for flipping at specified positions
+            //    if (transform.position.x >= 16.9f)
+            //    {
+            //        rend.flipX = false; // Facing right
+            //    }
+            //    else if (transform.position.x <= -6.59f)
+            //    {
+            //        rend.flipX = true; // Facing left
+            //    }
             }
+
         }
     }
 

@@ -84,7 +84,7 @@ public class Boss : MonoBehaviour
 
             healthSlider.gameObject.SetActive(false);
 
-            Destroy(gameObject, 2f);
+            Destroy(gameObject, 0.35f);
 
             firstGate.OpenGate();
             secondGate.OpenGate();
@@ -93,7 +93,6 @@ public class Boss : MonoBehaviour
 
             victoryAudio.Play();
 
-            CameraBossFight.EndBossCameraTransition();
 
 
 
