@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,7 +18,7 @@ public class EnterBossFight : MonoBehaviour
 
     [SerializeField] private Gates firstGate;
     [SerializeField] private Gates secondGate;
-
+    [SerializeField] private Gates audioClip;
     [SerializeField] private float delayTime = 2.0f;
     [SerializeField] private GameObject musicPlayer;
     [SerializeField] private AudioSource audioSource;
@@ -42,8 +43,11 @@ public class EnterBossFight : MonoBehaviour
             firstGate.CloseGate();
             secondGate.CloseGate();
 
-            musicPlayer.SetActive(false);
+            audioClip.PlayGateSound();
+           
             PlayAudioWithDelay();
+
+            musicPlayer.SetActive(false);
 
             trampoline.SetActive(true);
 

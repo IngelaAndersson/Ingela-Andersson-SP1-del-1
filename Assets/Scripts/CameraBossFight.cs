@@ -34,4 +34,9 @@ public class CameraBossFight : MonoBehaviour
     {
         inTransition = true;
     }
+
+    public void EndBossCameraTransition()
+    {
+        inTransition = false;
+    }
 }

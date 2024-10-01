@@ -30,6 +30,7 @@ public class Boss : MonoBehaviour
     private Animator animator;
     public GameObject trampoline;
     public BossMovements bossMovement;
+    public CameraBossFight CameraBossFight;
     public bool isSecondStage = false;
     public Color invincibleColor = Color.red;
 
@@ -91,6 +92,8 @@ public class Boss : MonoBehaviour
             audioSource.Pause();
 
             victoryAudio.Play();
+
+            CameraBossFight.EndBossCameraTransition();
 
 
 
