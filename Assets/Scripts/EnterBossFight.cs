@@ -38,8 +38,7 @@ public class EnterBossFight : MonoBehaviour
         if (other.CompareTag(playerTag) && !hasPlayedAnimation)
         {
             hasPlayedAnimation = true;
-            //gateAnim.SetTrigger("CloseGate");
-            //exitGateAnim.SetTrigger("CloseExit");
+   
             firstGate.CloseGate();
             secondGate.CloseGate();
 

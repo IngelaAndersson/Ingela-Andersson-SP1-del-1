@@ -48,22 +48,6 @@ public class BossMovements : MonoBehaviour
         {
             MoveBoss();
         }
-
-        //if (boss.isSecondStage)
-        //{
-        //    // Ensure movement is dependent on speed direction (flipped after collision)
-        //    transform.Translate(new Vector2(speed, 0) * Time.deltaTime);
-
-        //    // Optionally flip the sprite based on direction
-        //    //if (speed > 0)
-        //    //{
-        //    //    rend.flipX = true;  // Flip sprite to face right
-        //    //}
-        //    //else if (speed < 0)
-        //    //{
-        //    //    rend.flipX = false;  // Flip sprite to face left
-        //    //}
-        //}
     }
 
     public void SetInvincible(bool state)
@@ -74,44 +58,7 @@ public class BossMovements : MonoBehaviour
         }
     }
 
-    //private void MoveBoss()
-    //{
-    //    if (!boss.isSecondStage)
-    //    {
-    //        boss.LookAtPlayer();
-    //        secondStageMovement = false;
-    //        target = new Vector2(player.position.x, rb.position.y);
-    //        newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
-
-    //        rb.MovePosition(newPos);
-    //    }
-    //    else
-    //    {
-    //        secondStageMovement = true;
-    //        speed = 8;
-    //        if (moveToCollider)
-    //        {
-    //            target = new Vector2(collider1.transform.position.x, rb.position.y);
-    //            newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
-    //            rb.MovePosition(newPos);
-    //            if (transform.position.x > 0)
-    //            {
-    //                rend.flipX = false;
-    //            }
-    //        }
-    //        if (!moveToCollider)
-    //        {
-
-    //            target = new Vector2(collider2.transform.position.x, rb.position.y);
-    //            newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
-    //            rb.MovePosition(newPos);
-    //            if (transform.position.x < 0)
-    //            {
-    //                rend.flipX = true;
-    //            }
-    //        }
-    //    }
-    //}
+  
     public void MoveBoss()
     {
         if (!boss.isSecondStage)
@@ -136,15 +83,7 @@ public class BossMovements : MonoBehaviour
                 newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
                 rb.MovePosition(newPos);
 
-            //    // Check for flipping at specified positions
-            //    if (transform.position.x >= 16.9f)
-            //    {
-            //        rend.flipX = false; // Facing right
-            //    }
-            //    else if (transform.position.x <= -6.59f)
-            //    {
-            //        rend.flipX = true; // Facing left
-            //   }
+         
             }
             else
             {
@@ -152,15 +91,7 @@ public class BossMovements : MonoBehaviour
                 newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
                 rb.MovePosition(newPos);
 
-            //    // Check for flipping at specified positions
-            //    if (transform.position.x >= 16.9f)
-            //    {
-            //        rend.flipX = false; // Facing right
-            //    }
-            //    else if (transform.position.x <= -6.59f)
-            //    {
-            //        rend.flipX = true; // Facing left
-            //    }
+          
             }
 
         }
@@ -168,30 +99,18 @@ public class BossMovements : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Check if collision is with the "EnemyBlock" and it's the second stage
+        
         if (secondStageMovement && collision.gameObject == collider1)
         {
-            //boss.LookAtPlayer();
-            //Debug.Log(collision);
-            //target = new Vector2(collider2.transform.position.x, rb.position.y);
-            //newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
+          
             moveToCollider = false;
-            //if (transform.position.x < 0)
-            //{
-            //    rend.flipX = true;
-            //}
+          
         }
         if (secondStageMovement && collision.gameObject == collider2)
         {
-            //boss.LookAtPlayer();
-            //Debug.Log(collision);
-            //target = new Vector2(collider1.transform.position.x, rb.position.y);
-            //newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
+          
             moveToCollider = true;
-            //if (transform.position.x > 0)
-            //{
-            //    rend.flipX = false;
-            //}
+          
         }
     }
 }
