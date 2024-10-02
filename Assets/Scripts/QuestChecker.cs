@@ -7,25 +7,30 @@ public class QuestChecker : MonoBehaviour
 {
     [SerializeField] private GameObject dialogueBox, finishedText, unfinishedText;
     [SerializeField] private int questGoal = 10;
-    private int scene;
     [SerializeField] private int levelToLoad;
+    [SerializeField] private AudioClip levelCompleteSound;
+    [SerializeField] private GameObject musicPlayer;
 
+    private int scene;
+    private AudioSource audioSource;
     public EnemyCounter enemycount;
 
 
     private Animator anim;
     private bool levelIsLoading = false;
+    private bool hasPlayedAudio = false;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
         scene = SceneManager.GetActiveScene().buildIndex;
+        audioSource = GetComponent<AudioSource>();
     }
 
     //Om spelaren går in i området visas rutan.
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (!hasPlayedAudio && other.CompareTag("Player"))
         {
             Debug.Log("Spelaren gick in i triggern!");
 
@@ -42,7 +47,10 @@ public class QuestChecker : MonoBehaviour
                     finishedText.SetActive(true);
                     unfinishedText.SetActive(false);
                     anim.SetTrigger("Flag");
-                    Invoke("LoadNextLevel", 4.0f);
+                    audioSource.PlayOneShot(levelCompleteSound, 0.5f);
+                    hasPlayedAudio = true;
+                    musicPlayer.SetActive(false);
+                    Invoke("LoadNextLevel", 6.0f);
                     levelIsLoading = true;
                 }
                 else
@@ -70,7 +78,10 @@ public class QuestChecker : MonoBehaviour
                     finishedText.SetActive(true);  // Visa "quest klart"-texten
                     unfinishedText.SetActive(false);  // Dölja "quest ej klart"-texten
                     anim.SetTrigger("Flag");  // Trigga animation
-                    Invoke("LoadNextLevel", 4.0f);  // Ladda nästa scen efter 4 sekunder
+                    audioSource.PlayOneShot(levelCompleteSound, 0.5f);
+                    hasPlayedAudio = true;
+                    musicPlayer.SetActive(false);
+                    Invoke("LoadNextLevel", 6.0f);  // Ladda nästa scen efter 4 sekunder
                     levelIsLoading = true;
                 }
                 else

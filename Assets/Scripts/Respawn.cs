@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 public class Respawn : MonoBehaviour
 {
     [SerializeField] PlayerMovement playerMovement;
+    [SerializeField] Animator playerAnimator;
+    private void Start()
+    {
+        //Gameobject.setactive(false);
+    }
     void Update()
     {
         Bossrespawn();
@@ -14,7 +19,17 @@ public class Respawn : MonoBehaviour
     {
         if (playerMovement.currentHealth <= 0)
         {
-            SceneManager.LoadScene(3);
+            //gameobject setactive = true
+            playerMovement.enabled = false;
+            playerAnimator.SetTrigger("Die");
+            Invoke("LoadSceneRespawn", 1f);
         }
     }
+
+    private void LoadSceneRespawn()
+    {
+        SceneManager.LoadScene(3);
+    }
+
+    
 }

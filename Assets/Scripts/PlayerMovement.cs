@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform spawnPosition;
     [SerializeField] private LayerMask whatIsGround;
     [SerializeField] private AudioClip jumpSound, pickupSound;
+    [SerializeField] private AudioClip healthSound;
     [SerializeField] private GameObject appleParticles, dustParticles;
 
     [SerializeField] private Slider healthSlider;
@@ -31,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
     public int currentHealth = 0;
     public int applesCollected = 0;
     private string sceneName;
-    
+
 
     private Rigidbody2D rgbd;
     private SpriteRenderer rend;
@@ -108,6 +109,7 @@ public class PlayerMovement : MonoBehaviour
             Destroy(other.gameObject);
             applesCollected++;
             appleText.text = "" + applesCollected;
+            audioSource.pitch = Random.Range(0.8f, 1.2f);
             audioSource.PlayOneShot(pickupSound, 0.1f);
             //Instantiate klonar ett object.
             Instantiate(appleParticles, other.transform.position, Quaternion.identity);
@@ -132,6 +134,7 @@ public class PlayerMovement : MonoBehaviour
     {
         rgbd.AddForce(new Vector2(0, jumpForce));
         //Spelar upp hopp-ljudet
+        audioSource.pitch = Random.Range(0.8f, 1.2f);
         audioSource.PlayOneShot(jumpSound, 0.5f);
         Instantiate(dustParticles, transform.position, dustParticles.transform.localRotation);
     }
@@ -149,7 +152,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void TakeKnockback(float knockbackForce, float upwards)
+        public void TakeKnockback(float knockbackForce, float upwards)
     {
         canMove = false;
         rgbd.AddForce(new Vector2(knockbackForce, upwards));
@@ -164,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Respawn()
     {
-        if(sceneName != "Level3")
+        if (sceneName != "Level3")
         {
             currentHealth = startingHealth;
             UpdateHealthBar();
@@ -186,6 +189,7 @@ public class PlayerMovement : MonoBehaviour
             int healthToRestore = healthPickup.GetComponent<HealthPickup>().healthAmount;
             currentHealth += 3;
             UpdateHealthBar();
+            audioSource.PlayOneShot(healthSound, 0.7f);
             Destroy(healthPickup);
 
             if(currentHealth >= startingHealth)

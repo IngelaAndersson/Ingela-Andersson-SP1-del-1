@@ -5,9 +5,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
+
 public class Boss : MonoBehaviour
 {
-    [SerializeField] private float bounciness = 100;
+    //[SerializeField] private float bounciness = 100;
     [SerializeField] private float knockbackForce = 200f;
     [SerializeField] private float upwardForce = 100f;
     [SerializeField] private int damageGiven = 1;
@@ -17,8 +18,9 @@ public class Boss : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip hitSound;
     [SerializeField] private bool isInvincible = false;
-    [SerializeField] private Gate firstGate;
-    [SerializeField] private Gate secondGate;
+    [SerializeField] private Gates firstGate;
+    [SerializeField] private Gates secondGate;
+    [SerializeField] CameraBossFight bossCamera;
 
     public float normalSpeed = 2.0f;
     private float invincibilityTimer = 0f;
@@ -26,7 +28,9 @@ public class Boss : MonoBehaviour
     public Vector3 enlargedScale = new Vector3(2f, 2f, 2f);
     private Vector3 initialScale;
     private Animator animator;
-    private BossMovements bossMovement;
+    public GameObject trampoline;
+    public BossMovements bossMovement;
+    public CameraBossFight CameraBossFight;
     public bool isSecondStage = false;
     public Color invincibleColor = Color.red;
 
@@ -48,7 +52,9 @@ public class Boss : MonoBehaviour
         bossMovement = GetComponent<BossMovements>();
 
         animator = GetComponent<Animator>();
+
     }
+
 
     public void BossTakeDamage(float damageAmount)
     {
@@ -67,7 +73,7 @@ public class Boss : MonoBehaviour
 
         UpdateHealthBar();
 
-        audioSource.PlayOneShot(hitSound, 1f);
+        audioSource.PlayOneShot(hitSound, 0.5f);
 
 
         if (health <= 0)
@@ -78,7 +84,7 @@ public class Boss : MonoBehaviour
 
             healthSlider.gameObject.SetActive(false);
 
-            Destroy(gameObject, 2f);
+            Destroy(gameObject, 0.35f);
 
             firstGate.OpenGate();
             secondGate.OpenGate();
@@ -86,6 +92,8 @@ public class Boss : MonoBehaviour
             audioSource.Pause();
 
             victoryAudio.Play();
+
+
 
 
         }
@@ -101,6 +109,8 @@ public class Boss : MonoBehaviour
         isSecondStage = true;
 
         transform.localScale = enlargedScale;
+
+        trampoline.SetActive(false);
     }
 
     private void StartInvincibility()
@@ -196,8 +206,8 @@ public class Boss : MonoBehaviour
                 other.gameObject.GetComponent<PlayerMovement>().TakeKnockback(-knockbackForce, upwardForce);
             }
         }
-        }
     }
+}
 
 
 
@@ -205,4 +215,7 @@ public class Boss : MonoBehaviour
 
 
 
+
+ 
+        
 

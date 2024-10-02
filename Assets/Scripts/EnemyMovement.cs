@@ -11,13 +11,17 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private float knockbackForce = 200f;
     [SerializeField] private float upwardForce = 100f;
     [SerializeField] private int damageGiven = 1;
+    [SerializeField] private AudioClip enemyHit;
     private SpriteRenderer rend;
     private bool canMove = true;
-    EnemyCounter enemyCounterScript; 
+    EnemyCounter enemyCounterScript;
+
+    private AudioSource audioSource;
 
     private void Start()
     {
         rend = GetComponent<SpriteRenderer>();
+        audioSource = GetComponent<AudioSource>();
 
         // Ingen EnemyCounter behövs i level 1. 
         if (SceneManager.GetActiveScene().name == "Level1") 
@@ -97,6 +101,7 @@ public class EnemyMovement : MonoBehaviour
         {
             other.GetComponent<Rigidbody2D>().velocity = new Vector2(other.GetComponent<Rigidbody2D>().velocity.x, 0);
             other.GetComponent<Rigidbody2D>().AddForce(new Vector2(0, bounciness));
+            audioSource.PlayOneShot(enemyHit, 0.5f);
             GetComponent<Animator>().SetTrigger("Hit");
             GetComponent<BoxCollider2D>().enabled = false;
             GetComponent<CircleCollider2D>().enabled = false;
