@@ -1,9 +1,10 @@
+#if UNITY_EDITOR
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Tilemaps;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+#endif
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 2.0f;
